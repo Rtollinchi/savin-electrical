@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function App() {
   const [responseMessage, setResponseMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,39 +24,41 @@ export default function App() {
 
   return (
     <div>
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full bg-primary text-textDark p-6 shadow-lg z-50">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-accent">Savin Electrical Corp.</h1>
-          <ul className="flex space-x-6 text-lg">
-            <li>
-              <a href="#home" className="hover:text-accent transition">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#projects" className="hover:text-accent transition">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="hover:text-accent transition">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#careers" className="hover:text-accent transition">
-                Careers
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-accent transition">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+     {/* Navbar */}
+<nav className="fixed top-0 left-0 w-full bg-primary text-textDark p-4 shadow-lg z-50">
+<div className="container mx-auto flex justify-between items-center">
+  <h1 className="text-3xl font-bold text-accent">Savin Electrical Corp.</h1>
+
+  {/* Mobile Menu Button */}
+  <button
+    className="md:hidden text-white text-3xl"
+    onClick={() => setIsOpen(!isOpen)}
+  >
+    ☰
+  </button>
+
+  {/* Desktop Menu */}
+  <ul className="hidden md:flex space-x-6 text-lg">
+    <li><a href="#home" className="hover:text-accent transition">Home</a></li>
+    <li><a href="#projects" className="hover:text-accent transition">Projects</a></li>
+    <li><a href="#about" className="hover:text-accent transition">About</a></li>
+    <li><a href="#careers" className="hover:text-accent transition">Careers</a></li>
+    <li><a href="#contact" className="hover:text-accent transition">Contact</a></li>
+  </ul>
+</div>
+
+{/* Mobile Dropdown */}
+{isOpen && (
+  <ul className="md:hidden absolute top-16 left-0 w-full bg-primary text-center shadow-lg">
+    <li><a href="#home" className="block py-3 border-b" onClick={() => setIsOpen(false)}>Home</a></li>
+    <li><a href="#projects" className="block py-3 border-b" onClick={() => setIsOpen(false)}>Projects</a></li>
+    <li><a href="#about" className="block py-3 border-b" onClick={() => setIsOpen(false)}>About</a></li>
+    <li><a href="#careers" className="block py-3 border-b" onClick={() => setIsOpen(false)}>Careers</a></li>
+    <li><a href="#contact" className="block py-3" onClick={() => setIsOpen(false)}>Contact</a></li>
+  </ul>
+)}
+</nav>
+
 
       {/* Sections */}
       <section

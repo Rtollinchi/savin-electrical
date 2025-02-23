@@ -1,5 +1,15 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import ImageCarousel from "./components/ImageCarousel";
+
+const projectImages = {
+  "Landscape Lighting": Array.from({ length: 3 }, (_, i) => `/projects/landscape/landscape${i + 1}.jpeg`),
+  "Service Upgrades": Array.from({ length: 2 }, (_, i) => `/projects/upgrades/upgrades${i + 1}.jpeg`),
+  "Chandelier Installations": Array.from({ length: 3 }, (_, i) => `/projects/chandelier/chandelier${i + 1}.jpeg`),
+  "Panel Replacements": Array.from({ length: 2 }, (_, i) => `/projects/panel/panel${i + 1}.jpeg`),
+  "General Electrical Work": Array.from({ length: 2 }, (_, i) => `/projects/general/general${i + 1}.jpeg`),
+};
+
 
 export default function App() {
   const [responseMessage, setResponseMessage] = useState("");
@@ -24,41 +34,102 @@ export default function App() {
 
   return (
     <div>
-     {/* Navbar */}
-<nav className="fixed top-0 left-0 w-full bg-primary text-textDark p-4 shadow-lg z-50">
-<div className="container mx-auto flex justify-between items-center">
-  <h1 className="text-3xl font-bold text-accent">Savin Electrical Corp.</h1>
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 w-full bg-primary text-textDark p-4 shadow-lg z-50">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-3xl font-bold text-accent">
+            Savin Electrical Corp.
+          </h1>
 
-  {/* Mobile Menu Button */}
-  <button
-    className="md:hidden text-white text-3xl"
-    onClick={() => setIsOpen(!isOpen)}
-  >
-    ☰
-  </button>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-white text-3xl"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            ☰
+          </button>
 
-  {/* Desktop Menu */}
-  <ul className="hidden md:flex space-x-6 text-lg">
-    <li><a href="#home" className="hover:text-accent transition">Home</a></li>
-    <li><a href="#projects" className="hover:text-accent transition">Projects</a></li>
-    <li><a href="#about" className="hover:text-accent transition">About</a></li>
-    <li><a href="#careers" className="hover:text-accent transition">Careers</a></li>
-    <li><a href="#contact" className="hover:text-accent transition">Contact</a></li>
-  </ul>
-</div>
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex space-x-6 text-lg">
+            <li>
+              <a href="#home" className="hover:text-accent transition">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#projects" className="hover:text-accent transition">
+                Projects
+              </a>
+            </li>
+            <li>
+              <a href="#about" className="hover:text-accent transition">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#careers" className="hover:text-accent transition">
+                Careers
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="hover:text-accent transition">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
 
-{/* Mobile Dropdown */}
-{isOpen && (
-  <ul className="md:hidden absolute top-16 left-0 w-full bg-primary text-center shadow-lg">
-    <li><a href="#home" className="block py-3 border-b" onClick={() => setIsOpen(false)}>Home</a></li>
-    <li><a href="#projects" className="block py-3 border-b" onClick={() => setIsOpen(false)}>Projects</a></li>
-    <li><a href="#about" className="block py-3 border-b" onClick={() => setIsOpen(false)}>About</a></li>
-    <li><a href="#careers" className="block py-3 border-b" onClick={() => setIsOpen(false)}>Careers</a></li>
-    <li><a href="#contact" className="block py-3" onClick={() => setIsOpen(false)}>Contact</a></li>
-  </ul>
-)}
-</nav>
-
+        {/* Mobile Dropdown */}
+        {isOpen && (
+          <ul className="md:hidden absolute top-16 left-0 w-full bg-primary text-center shadow-lg">
+            <li>
+              <a
+                href="#home"
+                className="block py-3 border-b"
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#projects"
+                className="block py-3 border-b"
+                onClick={() => setIsOpen(false)}
+              >
+                Projects
+              </a>
+            </li>
+            <li>
+              <a
+                href="#about"
+                className="block py-3 border-b"
+                onClick={() => setIsOpen(false)}
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="#careers"
+                className="block py-3 border-b"
+                onClick={() => setIsOpen(false)}
+              >
+                Careers
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                className="block py-3"
+                onClick={() => setIsOpen(false)}
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        )}
+      </nav>
 
       {/* Sections */}
       <section
@@ -85,53 +156,19 @@ export default function App() {
       <section id="projects" className="py-20 bg-gray-100 text-center">
         <h2 className="text-4xl font-bold text-textDark mb-6">Our Projects</h2>
         <div className="grid md:grid-cols-3 gap-8 container mx-auto px-6">
-          {[
-            {
-              title: "Landscape Lighting",
-              img: "/projects/landscape.jpg",
-              desc: "Enhance your outdoor space with lighting.",
-            },
-            {
-              title: "Service Upgrades",
-              img: "/projects/upgrades.jpg",
-              desc: "Upgrade your electrical panel for safety.",
-            },
-            {
-              title: "Chandelier Installations",
-              img: "/projects/chandelier.jpg",
-              desc: "Elegant chandelier installations.",
-            },
-            {
-              title: "Panel Replacements",
-              img: "/projects/panel.jpg",
-              desc: "Modernize your home's power system.",
-            },
-            {
-              title: "General Electrical Work",
-              img: "/projects/general.jpg",
-              desc: "From wiring to troubleshooting.",
-            },
-          ].map((project, index) => (
+          {Object.entries(projectImages).map(([title, images], index) => (
             <div
               key={index}
               className="bg-white shadow-lg rounded-lg overflow-hidden"
             >
-              <img
-                src={project.img}
-                alt={project.title}
-                className="w-full h-48 object-cover"
-              />
+              <ImageCarousel images={images} />
               <div className="p-4">
-                <h3 className="text-xl font-semibold text-primary">
-                  {project.title}
-                </h3>
-                <p className="text-gray-700 mt-2">{project.desc}</p>
+                <h3 className="text-xl font-semibold text-primary">{title}</h3>
               </div>
             </div>
           ))}
         </div>
       </section>
-
       <section
         id="about"
         className="py-20 bg-primary text-textLight text-center"
@@ -225,7 +262,8 @@ export default function App() {
       <footer className="bg-primary text-textLight text-center p-6">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <p>
-            © {new Date().getFullYear()} Savin Electrical Corp. All rights reserved.
+            © {new Date().getFullYear()} Savin Electrical Corp. All rights
+            reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a

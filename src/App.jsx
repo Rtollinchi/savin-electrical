@@ -149,28 +149,28 @@ export default function App() {
           <div className="absolute bottom-20 left-1/4 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse"></div>
         </div>
 
-        <div className="bg-black/40 backdrop-blur-sm p-12 rounded-2xl text-white text-center max-w-4xl mx-4 border border-yellow-400/20">
-          <div className="mb-6">
-            <span className="inline-block px-4 py-2 bg-yellow-400/10 text-yellow-400 rounded-full text-sm font-medium border border-yellow-400/20">
+        <div className="bg-black/40 backdrop-blur-sm p-6 md:p-12 rounded-2xl text-white text-center max-w-4xl mx-4 border border-yellow-400/20">
+          <div className="mb-4 md:mb-6">
+            <span className="inline-block px-3 py-1 md:px-4 md:py-2 bg-yellow-400/10 text-yellow-400 rounded-full text-xs md:text-sm font-medium border border-yellow-400/20">
               Licensed & Insured Electricians
             </span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-yellow-100 to-yellow-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-yellow-100 to-yellow-300 bg-clip-text text-transparent">
             Powering Your World
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-300">
+          <p className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 text-gray-300">
             Expert Electrical Solutions for Homes & Businesses
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <a
               href="#contact"
-              className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold px-8 py-4 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-yellow-400/25"
+              className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-yellow-400/25 text-center"
             >
               Get Free Quote
             </a>
             <a
               href="tel:5167374630"
-              className="border-2 border-yellow-400 text-yellow-400 font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 hover:text-gray-900 transition-all duration-300"
+              className="border-2 border-yellow-400 text-yellow-400 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg hover:bg-yellow-400 hover:text-gray-900 transition-all duration-300 text-center"
             >
               📞 Call Now: (516) 737-4630
             </a>
@@ -190,11 +190,11 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-yellow-400/30 hover:-translate-y-2"
+                className="group bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-yellow-400/30 hover:-translate-y-2"
               >
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
@@ -223,7 +223,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {Object.entries(projectImages).slice(0, 3).map(([title, images], index) => (
               <div
                 key={index}
@@ -244,7 +244,7 @@ export default function App() {
           </div>
 
           {/* Bottom row - centered */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mt-6 md:mt-8">
             {Object.entries(projectImages).slice(3).map(([title, images], index) => (
               <div
                 key={index + 3}
@@ -269,12 +269,12 @@ export default function App() {
       {/* About Section */}
       <section id="about" className="py-20 bg-gradient-to-br from-yellow-50 to-white">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 md:mb-6">
                 Why Choose Savin Electrical?
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold">✓</span>
@@ -327,16 +327,16 @@ export default function App() {
       {/* Careers Section */}
       <section id="careers" className="py-20 bg-gray-100">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 md:mb-6">
             Join Our Growing Team
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12">
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8 md:mb-12">
             Looking for a rewarding career in electrical work? We offer competitive pay,
             comprehensive benefits, and opportunities for growth.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-8 md:mb-12">
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200">
               <h3 className="text-2xl font-bold text-gray-800 mb-3">Licensed Electrician</h3>
               <div className="space-y-2 text-gray-600 mb-6">
                 <p>💼 Full-time Position</p>
@@ -348,8 +348,8 @@ export default function App() {
                 <li>• Residential & commercial work</li>
               </ul>
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">Electrical Apprentice</h3>
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3">Electrical Apprentice</h3>
               <div className="space-y-2 text-gray-600 mb-6">
                 <p>💼 Full-time Position</p>
                 <p>🎓 Paid Training Program</p>
@@ -363,12 +363,20 @@ export default function App() {
             </div>
           </div>
 
-          <a
-            href="#contact"
-            className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold px-8 py-4 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg inline-block"
-          >
-            Apply Today
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#contact"
+              className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg inline-block text-center"
+            >
+              Apply via Contact Form
+            </a>
+            <a
+              href="mailto:savinelectrical@gmail.com?subject=Job Application - [Position Name]&body=Hello, I am interested in applying for a position at Savin Electrical. Please find my qualifications below:%0D%0A%0D%0APosition of Interest:%0D%0AExperience:%0D%0APhone:%0D%0AAvailability:%0D%0A%0D%0AThank you for your consideration."
+              className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg transition-all duration-300 text-center"
+            >
+              📧 Email Application
+            </a>
+          </div>
         </div>
       </section>
 
@@ -376,48 +384,52 @@ export default function App() {
       <section id="contact" className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               Get In Touch
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
               Ready to start your electrical project? Contact us for a free consultation and quote.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
             {/* Contact Info */}
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8 order-2 lg:order-1">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center flex-shrink-0">
                   <span className="text-gray-900 font-bold">📞</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">Call Us</h3>
-                  <p className="text-yellow-400 text-lg">(516) 737-4630</p>
+                  <h3 className="text-lg md:text-xl font-semibold">Call Us</h3>
+                  <a href="tel:5167374630" className="text-yellow-400 text-lg md:text-xl hover:underline">
+                    (516) 737-4630
+                  </a>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center flex-shrink-0">
                   <span className="text-gray-900 font-bold">📧</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">Email Us</h3>
-                  <p className="text-yellow-400 text-lg">savinelectrical@gmail.com</p>
+                  <h3 className="text-lg md:text-xl font-semibold">Email Us</h3>
+                  <a href="mailto:savinelectrical@gmail.com" className="text-yellow-400 text-lg md:text-xl hover:underline break-all">
+                    savinelectrical@gmail.com
+                  </a>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center flex-shrink-0">
                   <span className="text-gray-900 font-bold">📍</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">Service Areas</h3>
+                  <h3 className="text-lg md:text-xl font-semibold">Service Areas</h3>
                   <p className="text-gray-300">Woodmere, New York & surrounding areas</p>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
+            <div className="bg-gray-800 p-6 md:p-8 rounded-xl border border-gray-700 order-1 lg:order-2">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <input

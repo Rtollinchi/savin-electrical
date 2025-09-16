@@ -2,79 +2,101 @@ import { useState } from "react";
 import ImageCarousel from "./components/ImageCarousel";
 
 const projectImages = {
-  "Landscape Lighting": Array.from({ length: 3 }, (_, i) => `/projects/landscape/landscape${i + 1}.jpeg`),
-  "Service Upgrades": Array.from({ length: 2 }, (_, i) => `/projects/upgrades/upgrades${i + 1}.jpeg`),
-  "Chandelier Installations": Array.from({ length: 3 }, (_, i) => `/projects/chandelier/chandelier${i + 1}.jpeg`),
-  "Panel Replacements": Array.from({ length: 2 }, (_, i) => `/projects/panel/panel${i + 1}.jpeg`),
-  "General Electrical Work": Array.from({ length: 2 }, (_, i) => `/projects/general/general${i + 1}.jpeg`),
+  "Landscape Lighting": Array.from(
+    { length: 3 },
+    (_, i) => `/projects/landscape/landscape${i + 1}.jpeg`
+  ),
+  "Service Upgrades": Array.from(
+    { length: 2 },
+    (_, i) => `/projects/upgrades/upgrades${i + 1}.jpeg`
+  ),
+  "Chandelier Installations": Array.from(
+    { length: 3 },
+    (_, i) => `/projects/chandelier/chandelier${i + 1}.jpeg`
+  ),
+  "Panel Replacements": Array.from(
+    { length: 2 },
+    (_, i) => `/projects/panel/panel${i + 1}.jpeg`
+  ),
+  "General Electrical Work": Array.from(
+    { length: 2 },
+    (_, i) => `/projects/general/general${i + 1}.jpeg`
+  ),
 };
 
 const services = [
   {
     icon: "⚡",
     title: "Residential Wiring",
-    description: "Complete home electrical installations and rewiring services"
+    description: "Complete home electrical installations and rewiring services",
   },
   {
     icon: "🏢",
     title: "Commercial Electric",
-    description: "Professional electrical solutions for businesses and offices"
+    description: "Professional electrical solutions for businesses and offices",
   },
   {
     icon: "🔧",
     title: "Panel Upgrades",
-    description: "Modern electrical panel installations and safety upgrades"
+    description: "Modern electrical panel installations and safety upgrades",
   },
   {
     icon: "💡",
     title: "Lighting Design",
-    description: "Custom interior and exterior lighting solutions"
+    description: "Custom interior and exterior lighting solutions",
   },
   {
     icon: "🚨",
     title: "Emergency Service",
-    description: "24/7 emergency electrical repairs and troubleshooting"
+    description: "24/7 emergency electrical repairs and troubleshooting",
   },
   {
     icon: "🔌",
     title: "Smart Home Tech",
-    description: "Modern smart home electrical installations and automation"
-  }
+    description: "Modern smart home electrical installations and automation",
+  },
 ];
 
 export default function App() {
   const [responseMessage, setResponseMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success, error
+  const [formStatus, setFormStatus] = useState("idle"); // idle, sending, success, error
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus('sending');
+    setFormStatus("sending");
     const formData = new FormData(e.target);
 
     // Add hidden fields for FormSubmit configuration
-    formData.append('_next', window.location.href + '#contact');
-    formData.append('_subject', 'New Electrical Service Inquiry');
-    formData.append('_captcha', 'false');
+    formData.append("_next", window.location.href + "#contact");
+    formData.append("_subject", "New Electrical Service Inquiry");
+    formData.append("_captcha", "false");
 
     try {
-      const response = await fetch("https://formsubmit.co/SavinElectrical@gmail.com", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://formsubmit.co/SavinElectrical@gmail.com",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (response.ok) {
-        setResponseMessage("Message sent successfully! We'll get back to you within 24 hours.");
-        setFormStatus('success');
+        setResponseMessage(
+          "Message sent successfully! We'll get back to you within 24 hours."
+        );
+        setFormStatus("success");
         e.target.reset();
-        setTimeout(() => setFormStatus('idle'), 5000);
+        setTimeout(() => setFormStatus("idle"), 5000);
       } else {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
     } catch (error) {
-      setResponseMessage("Error sending message. Please call us directly at (516) 737-4630.");
-      setFormStatus('error');
-      setTimeout(() => setFormStatus('idle'), 5000);
+      setResponseMessage(
+        "Error sending message. Please call us directly at (516) 737-4630."
+      );
+      setFormStatus("error");
+      setTimeout(() => setFormStatus("idle"), 5000);
     }
   };
 
@@ -97,12 +119,19 @@ export default function App() {
             className="md:hidden text-white text-3xl hover:text-yellow-400 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? '✕' : '☰'}
+            {isOpen ? "✕" : "☰"}
           </button>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-8 text-lg">
-            {['Home', 'Services', 'Projects', 'About', 'Careers', 'Contact'].map((item) => (
+            {[
+              "Home",
+              "Services",
+              "Projects",
+              "About",
+              "Careers",
+              "Contact",
+            ].map((item) => (
               <li key={item}>
                 <a
                   href={`#${item.toLowerCase()}`}
@@ -117,9 +146,20 @@ export default function App() {
         </div>
 
         {/* Mobile Dropdown */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ${
+            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
           <ul className="pt-4 space-y-2">
-            {['Home', 'Services', 'Projects', 'About', 'Careers', 'Contact'].map((item) => (
+            {[
+              "Home",
+              "Services",
+              "Projects",
+              "About",
+              "Careers",
+              "Contact",
+            ].map((item) => (
               <li key={item}>
                 <a
                   href={`#${item.toLowerCase()}`}
@@ -139,16 +179,10 @@ export default function App() {
         id="home"
         className="min-h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden"
         style={{
-          backgroundImage: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/hero-image.jpg')"
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/hero-image.jpg')",
         }}
       >
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-1 h-1 bg-blue-400 rounded-full animate-ping"></div>
-          <div className="absolute bottom-20 left-1/4 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse"></div>
-        </div>
-
         <div className="bg-black/40 backdrop-blur-sm p-6 md:p-12 rounded-2xl text-white text-center max-w-4xl mx-4 border border-yellow-400/20">
           <div className="mb-4 md:mb-6">
             <span className="inline-block px-3 py-1 md:px-4 md:py-2 bg-yellow-400/10 text-yellow-400 rounded-full text-xs md:text-sm font-medium border border-yellow-400/20">
@@ -179,14 +213,18 @@ export default function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section
+        id="services"
+        className="py-20 bg-gradient-to-b from-gray-50 to-white"
+      >
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
               Our Expert Services
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              From simple repairs to complex installations, we deliver reliable electrical solutions
+              From simple repairs to complex installations, we deliver reliable
+              electrical solutions
             </p>
           </div>
 
@@ -219,55 +257,67 @@ export default function App() {
               Featured Projects
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              See our craftsmanship in action through our recent electrical installations
+              See our craftsmanship in action through our recent electrical
+              installations
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {Object.entries(projectImages).slice(0, 3).map(([title, images], index) => (
-              <div
-                key={index}
-                className="group bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-yellow-400/50"
-              >
-                <div className="relative overflow-hidden">
-                  <ImageCarousel images={images} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            {Object.entries(projectImages)
+              .slice(0, 3)
+              .map(([title, images], index) => (
+                <div
+                  key={index}
+                  className="group bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-yellow-400/50"
+                >
+                  <div className="relative overflow-hidden">
+                    <ImageCarousel images={images} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors">
+                      {title}
+                    </h3>
+                    <p className="text-gray-400 mt-2">
+                      Professional installation with quality materials
+                    </p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors">
-                    {title}
-                  </h3>
-                  <p className="text-gray-400 mt-2">Professional installation with quality materials</p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
 
           {/* Bottom row - centered */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mt-6 md:mt-8">
-            {Object.entries(projectImages).slice(3).map(([title, images], index) => (
-              <div
-                key={index + 3}
-                className="group bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-yellow-400/50"
-              >
-                <div className="relative overflow-hidden">
-                  <ImageCarousel images={images} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            {Object.entries(projectImages)
+              .slice(3)
+              .map(([title, images], index) => (
+                <div
+                  key={index + 3}
+                  className="group bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-yellow-400/50"
+                >
+                  <div className="relative overflow-hidden">
+                    <ImageCarousel images={images} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors">
+                      {title}
+                    </h3>
+                    <p className="text-gray-400 mt-2">
+                      Professional installation with quality materials
+                    </p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors">
-                    {title}
-                  </h3>
-                  <p className="text-gray-400 mt-2">Professional installation with quality materials</p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gradient-to-br from-yellow-50 to-white">
+      <section
+        id="about"
+        className="py-20 bg-gradient-to-br from-yellow-50 to-white"
+      >
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
@@ -280,8 +330,13 @@ export default function App() {
                     <span className="text-white font-bold">✓</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Licensed & Insured</h3>
-                    <p className="text-gray-600">Fully licensed electricians with comprehensive insurance coverage</p>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      Licensed & Insured
+                    </h3>
+                    <p className="text-gray-600">
+                      Fully licensed electricians with comprehensive insurance
+                      coverage
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -289,8 +344,12 @@ export default function App() {
                     <span className="text-white font-bold">⚡</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">24/7 Emergency Service</h3>
-                    <p className="text-gray-600">Available around the clock for electrical emergencies</p>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      24/7 Emergency Service
+                    </h3>
+                    <p className="text-gray-600">
+                      Available around the clock for electrical emergencies
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -298,8 +357,12 @@ export default function App() {
                     <span className="text-white font-bold">★</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Quality Guaranteed</h3>
-                    <p className="text-gray-600">All work backed by our satisfaction guarantee</p>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      Quality Guaranteed
+                    </h3>
+                    <p className="text-gray-600">
+                      All work backed by our satisfaction guarantee
+                    </p>
                   </div>
                 </div>
               </div>
@@ -307,7 +370,9 @@ export default function App() {
             <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 p-8 rounded-2xl text-white">
               <div className="text-center">
                 <h3 className="text-3xl font-bold mb-4">Over 15 Years</h3>
-                <p className="text-xl mb-6">Of trusted electrical service in the community</p>
+                <p className="text-xl mb-6">
+                  Of trusted electrical service in the community
+                </p>
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold">500+</div>
@@ -331,13 +396,16 @@ export default function App() {
             Join Our Growing Team
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8 md:mb-12">
-            Looking for a rewarding career in electrical work? We offer competitive pay,
-            comprehensive benefits, and opportunities for growth.
+            Looking for a rewarding career in electrical work? We offer
+            competitive pay, comprehensive benefits, and opportunities for
+            growth.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-8 md:mb-12">
             <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">Licensed Electrician</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                Licensed Electrician
+              </h3>
               <div className="space-y-2 text-gray-600 mb-6">
                 <p>💼 Full-time Position</p>
                 <p>📈 Growth Opportunities</p>
@@ -349,7 +417,9 @@ export default function App() {
               </ul>
             </div>
             <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200">
-              <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3">Electrical Apprentice</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3">
+                Electrical Apprentice
+              </h3>
               <div className="space-y-2 text-gray-600 mb-6">
                 <p>💼 Full-time Position</p>
                 <p>🎓 Paid Training Program</p>
@@ -381,14 +451,18 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      <section
+        id="contact"
+        className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white"
+      >
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               Get In Touch
             </h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-              Ready to start your electrical project? Contact us for a free consultation and quote.
+              Ready to start your electrical project? Contact us for a free
+              consultation and quote.
             </p>
           </div>
 
@@ -401,7 +475,10 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-lg md:text-xl font-semibold">Call Us</h3>
-                  <a href="tel:5167374630" className="text-yellow-400 text-lg md:text-xl hover:underline">
+                  <a
+                    href="tel:5167374630"
+                    className="text-yellow-400 text-lg md:text-xl hover:underline"
+                  >
                     (516) 737-4630
                   </a>
                 </div>
@@ -412,7 +489,10 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-lg md:text-xl font-semibold">Email Us</h3>
-                  <a href="mailto:savinelectrical@gmail.com" className="text-yellow-400 text-lg md:text-xl hover:underline break-all">
+                  <a
+                    href="mailto:savinelectrical@gmail.com"
+                    className="text-yellow-400 text-lg md:text-xl hover:underline break-all"
+                  >
                     savinelectrical@gmail.com
                   </a>
                 </div>
@@ -422,8 +502,12 @@ export default function App() {
                   <span className="text-gray-900 font-bold">📍</span>
                 </div>
                 <div>
-                  <h3 className="text-lg md:text-xl font-semibold">Service Areas</h3>
-                  <p className="text-gray-300">Woodmere, New York & surrounding areas</p>
+                  <h3 className="text-lg md:text-xl font-semibold">
+                    Service Areas
+                  </h3>
+                  <p className="text-gray-300">
+                    Woodmere, New York & surrounding areas
+                  </p>
                 </div>
               </div>
             </div>
@@ -484,21 +568,25 @@ export default function App() {
                 </div>
                 <button
                   type="submit"
-                  disabled={formStatus === 'sending'}
+                  disabled={formStatus === "sending"}
                   className={`w-full font-bold px-6 py-4 rounded-lg transition-all duration-300 ${
-                    formStatus === 'sending'
-                      ? 'bg-gray-600 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 hover:scale-105 shadow-lg'
+                    formStatus === "sending"
+                      ? "bg-gray-600 cursor-not-allowed"
+                      : "bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 hover:scale-105 shadow-lg"
                   }`}
                 >
-                  {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
+                  {formStatus === "sending" ? "Sending..." : "Send Message"}
                 </button>
               </form>
 
               {responseMessage && (
-                <div className={`mt-4 p-4 rounded-lg ${
-                  formStatus === 'success' ? 'bg-green-600/20 text-green-400' : 'bg-red-600/20 text-red-400'
-                }`}>
+                <div
+                  className={`mt-4 p-4 rounded-lg ${
+                    formStatus === "success"
+                      ? "bg-green-600/20 text-green-400"
+                      : "bg-red-600/20 text-red-400"
+                  }`}
+                >
                   {responseMessage}
                 </div>
               )}
@@ -521,20 +609,53 @@ export default function App() {
                 </h3>
               </div>
               <p className="text-gray-400">
-                Your trusted electrical contractor for residential and commercial projects.
+                Your trusted electrical contractor for residential and
+                commercial projects.
               </p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-yellow-400">Quick Links</h4>
+              <h4 className="text-lg font-semibold mb-4 text-yellow-400">
+                Quick Links
+              </h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#services" className="hover:text-yellow-400 transition-colors">Services</a></li>
-                <li><a href="#projects" className="hover:text-yellow-400 transition-colors">Projects</a></li>
-                <li><a href="#about" className="hover:text-yellow-400 transition-colors">About</a></li>
-                <li><a href="#careers" className="hover:text-yellow-400 transition-colors">Careers</a></li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-yellow-400 transition-colors"
+                  >
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#projects"
+                    className="hover:text-yellow-400 transition-colors"
+                  >
+                    Projects
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#about"
+                    className="hover:text-yellow-400 transition-colors"
+                  >
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#careers"
+                    className="hover:text-yellow-400 transition-colors"
+                  >
+                    Careers
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-yellow-400">Contact Info</h4>
+              <h4 className="text-lg font-semibold mb-4 text-yellow-400">
+                Contact Info
+              </h4>
               <div className="space-y-2 text-gray-400">
                 <p>📞 (516) 737-4630</p>
                 <p>📧 savinelectrical@gmail.com</p>
@@ -545,7 +666,8 @@ export default function App() {
 
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400">
-              © {new Date().getFullYear()} Savin Electrical Corp. All rights reserved.
+              © {new Date().getFullYear()} Savin Electrical Corp. All rights
+              reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a

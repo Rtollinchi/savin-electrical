@@ -72,7 +72,7 @@ export default function App() {
         throw new Error('Network response was not ok');
       }
     } catch (error) {
-      setResponseMessage("Error sending message. Please call us directly at (555) 123-4567.");
+      setResponseMessage("Error sending message. Please call us directly at (516) 737-4630.");
       setFormStatus('error');
       setTimeout(() => setFormStatus('idle'), 5000);
     }
@@ -169,10 +169,10 @@ export default function App() {
               Get Free Quote
             </a>
             <a
-              href="tel:555-123-4567"
+              href="tel:5167374630"
               className="border-2 border-yellow-400 text-yellow-400 font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 hover:text-gray-900 transition-all duration-300"
             >
-              📞 Call Now: (555) 123-4567
+              📞 Call Now: (516) 737-4630
             </a>
           </div>
         </div>
@@ -224,9 +224,30 @@ export default function App() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.entries(projectImages).map(([title, images], index) => (
+            {Object.entries(projectImages).slice(0, 3).map(([title, images], index) => (
               <div
                 key={index}
+                className="group bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-yellow-400/50"
+              >
+                <div className="relative overflow-hidden">
+                  <ImageCarousel images={images} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors">
+                    {title}
+                  </h3>
+                  <p className="text-gray-400 mt-2">Professional installation with quality materials</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom row - centered */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+            {Object.entries(projectImages).slice(3).map(([title, images], index) => (
+              <div
+                key={index + 3}
                 className="group bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-yellow-400/50"
               >
                 <div className="relative overflow-hidden">
@@ -319,8 +340,6 @@ export default function App() {
               <h3 className="text-2xl font-bold text-gray-800 mb-3">Licensed Electrician</h3>
               <div className="space-y-2 text-gray-600 mb-6">
                 <p>💼 Full-time Position</p>
-                <p>💰 $65,000 - $85,000/year</p>
-                <p>🏥 Full Benefits Package</p>
                 <p>📈 Growth Opportunities</p>
               </div>
               <ul className="text-left text-gray-600 space-y-1 text-sm">
@@ -333,7 +352,6 @@ export default function App() {
               <h3 className="text-2xl font-bold text-gray-800 mb-3">Electrical Apprentice</h3>
               <div className="space-y-2 text-gray-600 mb-6">
                 <p>💼 Full-time Position</p>
-                <p>💰 $40,000 - $55,000/year</p>
                 <p>🎓 Paid Training Program</p>
                 <p>📚 Educational Support</p>
               </div>
@@ -375,7 +393,7 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold">Call Us</h3>
-                  <p className="text-yellow-400 text-lg">(555) 123-4567</p>
+                  <p className="text-yellow-400 text-lg">(516) 737-4630</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
@@ -384,7 +402,7 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold">Email Us</h3>
-                  <p className="text-yellow-400 text-lg">info@savinelectrical.com</p>
+                  <p className="text-yellow-400 text-lg">savinelectrical@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -393,7 +411,7 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold">Service Areas</h3>
-                  <p className="text-gray-300">Northern New Jersey & surrounding areas</p>
+                  <p className="text-gray-300">Woodmere, New York & surrounding areas</p>
                 </div>
               </div>
             </div>
@@ -506,9 +524,9 @@ export default function App() {
             <div>
               <h4 className="text-lg font-semibold mb-4 text-yellow-400">Contact Info</h4>
               <div className="space-y-2 text-gray-400">
-                <p>📞 (555) 123-4567</p>
-                <p>📧 info@savinelectrical.com</p>
-                <p>📍 Northern New Jersey</p>
+                <p>📞 (516) 737-4630</p>
+                <p>📧 savinelectrical@gmail.com</p>
+                <p>📍 Woodmere, NY</p>
               </div>
             </div>
           </div>

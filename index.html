@@ -1,13 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Rea</title>
+
+    <!-- SEO Meta Tags -->
+    <title>Savin Electrical Corp - Licensed Electricians | Residential & Commercial</title>
+    <meta name="description" content="Professional electrical services in Northern New Jersey. Licensed electricians specializing in residential wiring, commercial electrical work, panel upgrades, and emergency repairs. Free quotes available." />
+    <meta name="keywords" content="electrician, electrical contractor, residential wiring, commercial electric, panel upgrade, New Jersey electrician, emergency electrical service" />
+    <meta name="author" content="Savin Electrical Corp" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Savin Electrical Corp - Licensed Electricians" />
+    <meta property="og:description" content="Professional electrical services in Northern New Jersey. Licensed electricians with over 15 years of experience." />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:url" content="https://www.savinelectrical.com" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Savin Electrical Corp - Licensed Electricians" />
+    <meta name="twitter:description" content="Professional electrical services in Northern New Jersey. Licensed electricians with over 15 years of experience." />
+    <meta name="twitter:image" content="/twitter-image.jpg" />
+
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Savin Electrical Corp",
+      "description": "Professional electrical contractor providing residential and commercial electrical services",
+      "url": "https://www.savinelectrical.com",
+      "telephone": "(555) 123-4567",
+      "email": "SavinElectrical@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "40.7128",
+        "longitude": "-74.0060"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "16:00"
+        }
+      ],
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "40.7128",
+          "longitude": "-74.0060"
+        },
+        "geoRadius": "50000"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Electrical Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Residential Electrical Work",
+              "description": "Complete home electrical installations and rewiring services"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial Electrical Services",
+              "description": "Professional electrical solutions for businesses and offices"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Panel Upgrades",
+              "description": "Modern electrical panel installations and safety upgrades"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Emergency Electrical Service",
+              "description": "24/7 emergency electrical repairs and troubleshooting"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      }
+    }
+    </script>
+
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#eab308">
+    <meta name="msapplication-TileColor" content="#eab308">
+    <meta name="theme-color" content="#eab308">
+
+    <!-- Performance optimization -->
+    <link rel="dns-prefetch" href="//formsubmit.co">
+
+    <style>
+      /* Critical CSS for initial load */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        scroll-behavior: smooth;
+      }
+
+      /* Loading screen */
+      #initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+
+      .loader {
+        width: 50px;
+        height: 50px;
+        border: 3px solid #374151;
+        border-top: 3px solid #eab308;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Hide loader when React app loads */
+      .loaded #initial-loader {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
   </head>
   <body>
+    <!-- Initial loading screen -->
+    <div id="initial-loader">
+      <div class="loader"></div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Remove loader when app loads -->
+    <script>
+      window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        setTimeout(function() {
+          const loader = document.getElementById('initial-loader');
+          if (loader) loader.remove();
+        }, 500);
+      });
+    </script>
+
+    <!-- Google Analytics (replace with actual tracking ID) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script> -->
   </body>
 </html>

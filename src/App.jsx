@@ -13,7 +13,6 @@ const projectImages = {
   "General Electrical Work": [
     `/projects/general/IMG_1522.jpg`,
     `/projects/general/IMG_1523.jpeg`,
-    `/projects/general/IMG_4540.jpg`,
     `/projects/general/IMG_0655.jpeg`,
     `/projects/general/IMG_0657.jpeg`
   ],

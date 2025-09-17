@@ -152,13 +152,6 @@ export default function App() {
           backgroundImage: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/hero-image.jpg')"
         }}
       >
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-1 h-1 bg-blue-400 rounded-full animate-ping"></div>
-          <div className="absolute bottom-20 left-1/4 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse"></div>
-        </div>
-
         <div className="bg-black/40 backdrop-blur-sm p-6 md:p-12 rounded-2xl text-white text-center max-w-4xl mx-4 border border-yellow-400/20">
           <div className="mb-4 md:mb-6">
             <span className="inline-block px-3 py-1 md:px-4 md:py-2 bg-yellow-400/10 text-yellow-400 rounded-full text-xs md:text-sm font-medium border border-yellow-400/20">

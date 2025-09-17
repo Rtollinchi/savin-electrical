@@ -321,7 +321,7 @@ export default function App() {
                   <img
                     src="/projects/awards/longisland-choice-award.jpeg"
                     alt="Long Island Choice Awards Winner"
-                    className="w-32 h-32 mx-auto rounded-lg shadow-lg mb-4 object-contain bg-white p-2"
+                    className="w-90 h-100 mx-auto rounded-lg mb-4 object-contain"
                   />
                   <p className="text-lg font-semibold">Long Island Choice Awards Winner</p>
                   <p className="text-sm">Best Electrical Company</p>

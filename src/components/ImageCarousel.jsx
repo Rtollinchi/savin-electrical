@@ -6,37 +6,57 @@ export default function ImageCarousel({ images }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    if (images.length === 0) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000); // Change image every 4 seconds
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   useEffect(() => {
+    if (images.length === 0) {
+      setIsLoaded(true);
+      return;
+    }
+
     // Preload images for smooth transitions
-    images.forEach((src) => {
-      const img = new Image();
-      img.src = src;
+    const imagePromises = images.map((src) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = resolve; // Still resolve on error to not block loading
+        img.src = src;
+      });
     });
-    setIsLoaded(true);
+
+    Promise.all(imagePromises).then(() => {
+      setIsLoaded(true);
+    });
   }, [images]);
 
   const goToSlide = (index) => {
-    setCurrentIndex(index);
+    if (index >= 0 && index < images.length) {
+      setCurrentIndex(index);
+    }
   };
 
-  const goToPrevious = () => {
+  const goToPrevious = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
-  const goToNext = () => {
+  const goToNext = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  if (!isLoaded) {
+  if (!isLoaded || images.length === 0) {
     return (
       <div className="relative w-full h-64 md:h-80 lg:h-96 bg-gray-200 animate-pulse flex items-center justify-center">
         <div className="text-gray-400">Loading...</div>
@@ -71,8 +91,9 @@ export default function ImageCarousel({ images }) {
         <>
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-10"
             aria-label="Previous image"
+            type="button"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -80,8 +101,9 @@ export default function ImageCarousel({ images }) {
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-10"
             aria-label="Next image"
+            type="button"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -92,7 +114,7 @@ export default function ImageCarousel({ images }) {
 
       {/* Dot Indicators */}
       {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
           {images.map((_, index) => (
             <button
               key={index}
@@ -103,15 +125,11 @@ export default function ImageCarousel({ images }) {
                   : "bg-white/50 hover:bg-white/80"
               }`}
               aria-label={`Go to slide ${index + 1}`}
+              type="button"
             />
           ))}
         </div>
       )}
-
-      {/* Image Counter */}
-      <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        {currentIndex + 1} / {images.length}
-      </div>
     </div>
   );
 }
